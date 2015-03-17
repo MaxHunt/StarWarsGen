@@ -365,6 +365,8 @@ var quotes = [
 ];
 
 function get() {
-   return quotes[Math.floor(Math.random() * quotes.length)];}
-
-
+   return quotes[Math.floor(Math.random() * quotes.length)];
+}
+module.exports = {
+   get: get   
+};

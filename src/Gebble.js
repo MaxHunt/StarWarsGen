@@ -33,7 +33,7 @@ function init(opts){
 }
 
 //Get Values for Acelerometer
-function startDectection(e){
+function startDetection(e){
    var frameArray = [];
    frameArray = arrayToFrames(e);
    if (timeOfFrame===0||frameArray[0][0].time - timeOfFrame >= options.delay){
@@ -95,5 +95,11 @@ function detectGesture(frameArray){
          }
       }      
    }
-   return(false);  
+   return[false,null];  
 }
+module.exports = {
+   init: init,
+   start: startDetection,
+   arrayToFrames: arrayToFrames,
+   detect: detectGesture   
+};

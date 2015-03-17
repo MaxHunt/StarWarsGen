@@ -5,13 +5,12 @@
  * By Max Hunt - 609556
  * Date - 15/01/2015
  */
-
 //include Accel Pebble Libary
 var Accel = require('ui/accel');
 //include Gebble Libary
-var Gebble = require('./Gebble.js');
+var Gebble = require('Gebble');
 //include starwars quotes
-var starwars = require('./starwars.js');
+var starwars = require('starwars');
 //iniate acceleometer
 Accel.init();
 //include UI Pebble Libary
@@ -26,7 +25,6 @@ var TitleText = new UI.Text({ position: new Vector2(0,0), size: new Vector2(144,
 var QuoteText = new UI.Text({ position: new Vector2(0,25), size: new Vector2(144, 168) });
 //QuoteScreen varible
 var inQuoteScreen = false;
-
 //set the accelerometer values
 Accel.config({
    rate: 25,
@@ -52,14 +50,14 @@ var opt = {debug:true, delay:3000, gestures:gestures};
 Gebble.init(opt);
 main.show();
 main.on('click', 'select', onClick);
-
-
+//Start quote generator
 function onClick(e) {
    console.log('Entered QuoteScreen');
-   TitleText.text('Counter Screen');
+   TitleText.text('Your Quote:');
    QuoteScreen.insert(0,TitleText);
    console.log("Title text added");
    QuoteScreen.show();
+   inQuoteScreen = true;
    QuoteScreen.on('click','back',onAccelBack);
    QuoteScreen.on('accelData', onPeek);       
 }
@@ -70,17 +68,19 @@ function onAccelBack(){
    QuoteScreen.hide();   
 }
 //Get Values for Acelerometer
-function onPeek(e){  
+function onPeek(e){
    if (inQuoteScreen === true){
-      var detection = Gebble.startDetection(e);
+      var detection = Gebble.start(e);
+      console.log(detection);
       insertElements(detection);   
       }     
 }
-
 //Insert onto screen
 function insertElements(detection) {
-   if (detection[0]===true){   
-      QuoteText.insert(0,starwars.get());
+   if (detection[0]===true){
+      var Quote = starwars.get();
+      QuoteText.text(Quote);
+      QuoteScreen.insert(1,QuoteText);
    }
    QuoteScreen.show();
 }
