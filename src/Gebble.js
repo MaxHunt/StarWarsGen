@@ -45,7 +45,10 @@ function startDetection(e){
          Accel.config({subscribe: true}); 
          return(detection);   
       } 
-   else{if(options.debug){ console.log("On time out");}}    
+   else{
+      if(options.debug){console.log("On time out");}
+      return[false,-1];
+   }    
 }
 
 //Convert the arrays into frames, so they can be processed
@@ -95,7 +98,7 @@ function detectGesture(frameArray){
          }
       }      
    }
-   return[false,null];  
+   return [false,-1] ;  
 }
 module.exports = {
    init: init,

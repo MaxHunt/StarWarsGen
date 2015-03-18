@@ -18,7 +18,7 @@ var UI = require('ui');
 //get vector Pebble Libary
 var Vector2 = require('vector2');
 //Screen for real time results
-var QuoteScreen = new UI.Window();
+var QuoteScreen = new UI.Window({scrollable: true});
 //Elements for AccelerometerScreen
 var TitleText = new UI.Text({ position: new Vector2(0,0), size: new Vector2(144, 168) });
 //CountersText
