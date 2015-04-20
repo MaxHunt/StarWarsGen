@@ -1,3 +1,7 @@
+/*
+Quotes extracted, 20/02/2015, from David Gualds project. This can be found here https://github.com/dcgauld/starwars.
+Thanks David.
+*/
 var quotes = [
   'At last we will reveal ourselves to the Jedi. At last we will have revenge.',
   'Do not defy the council, Master, not again.',
