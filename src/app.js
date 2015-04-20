@@ -70,7 +70,7 @@ function onAccelBack(){
 //Get Values for Acelerometer
 function onPeek(e){
    if (inQuoteScreen === true){
-      var detection = Gebble.start(e);
+      var detection = Gebble.detect(e);
       console.log(detection);
       insertElements(detection);   
       }     
