@@ -46,7 +46,7 @@ var shakeZ =[[{x:4000,y:4000,z:4000,name:"shakeZ"},{x:0,y:0,z:1100}]];
 var gestures = [shake,shakeX,shakeY,shakeZ];
 //start APP
 console.log("App started");
-var opt = {debug:true, delay:3000, gestures:gestures};
+var opt = {delay:3000,gestures:gestures,debug:1};
 Gebble.init(opt);
 main.show();
 main.on('click', 'select', onClick);
@@ -71,7 +71,7 @@ function onAccelBack(){
 function onPeek(e){
    if (inQuoteScreen === true){
       var detection = Gebble.detect(e);
-      console.log(detection);
+      //console.log(detection);
       insertElements(detection);   
       }     
 }

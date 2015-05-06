@@ -3,7 +3,7 @@
  *
  * Gesture Detection Libray
  * By Max Hunt - 609556
- * Date - 15/01/2015
+ * Latest Verison UpDate - 20/04/2015
  */
 
 //Gestures
@@ -28,8 +28,12 @@ var maxLengthGes = 0;
 
 //Create Libary Object
 function init(opts){
-   options = opts || {}; 
-   options.debug = opts.debug || defaultDebug;
+   options = opts || {};
+   if (opts.debug === 0){
+      options.debug = false;
+   }else{
+      options.debug = defaultDebug;
+   }
    options.delay = opts.delay || defaultTimeDifference;
    options.gestures = opts.gestures || gesture;
 }
@@ -39,9 +43,7 @@ function startDetection(e){
    var frameArray = [];
    maximumGestureLength();
    frameArray = arrayToFrames(e);
-   console.log("going to join");
    joinFrameArrays(frameArray);
-   console.log(JSON.stringify(stepArray));
    cachedFrameArray = frameArray;
    if (timeOfFrame===0||frameArray[0][0].time - timeOfFrame >= options.delay){
       var detection = detectGesture(frameArray);
